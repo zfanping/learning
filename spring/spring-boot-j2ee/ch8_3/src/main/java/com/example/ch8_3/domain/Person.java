@@ -3,11 +3,13 @@ package com.example.ch8_3.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by frank on 2018-06-06.
  */
 @Entity
+@Table(name = "GCENTER_PERSON")
 public class Person {
     @Id
     @GeneratedValue
