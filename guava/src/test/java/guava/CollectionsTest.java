@@ -58,14 +58,14 @@ public class CollectionsTest extends TestCase {
     }
 
     public void test_iterators() {
-        List<String> list = Lists.newArrayList("a", "b", "c");
-
-        Predicate<String> condition = new Predicate<String>() {
-            public boolean apply(String input) {
-                return "a".equals(input);
-            }
-        };
-        boolean allIsStartsWithP = Iterators.all(list.iterator(), condition);
-        assertEquals(false, Iterators.all(list.iterator(), condition));
+//        List<String> list = Lists.newArrayList("a", "b", "c");
+//
+//        Predicate<String> condition = new Predicate<String>() {
+//            public boolean apply(String input) {
+//                return "a".equals(input);
+//            }
+//        };
+//        boolean allIsStartsWithP = Iterators.all(list.iterator(), condition);
+//        assertEquals(false, Iterators.all(list.iterator(), condition));
     }
 }
