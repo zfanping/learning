@@ -1,6 +1,7 @@
 package nia.ch10;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
@@ -11,8 +12,21 @@ import java.util.List;
  */
 public class ToIntegerDecoder extends ByteToMessageDecoder {
     @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        System.out.println("ToIntegerDecoder channelRead: " + ByteBufUtil.hexDump((ByteBuf) msg));
+        super.channelRead(ctx, msg);
+    }
+
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("ToIntegerDecoder channelReadComplete: ");
+        super.channelReadComplete(ctx);
+    }
+
+    @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        if(in.readableBytes()>=4){
+        System.out.println("ToIntegerDecoder: " + ByteBufUtil.hexDump(in));
+        while (in.readableBytes() >= 4) {
             out.add(in.readInt());
         }
     }

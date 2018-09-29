@@ -11,6 +11,7 @@ import java.util.List;
 public class IntegerToStringDecoder extends MessageToMessageDecoder<Integer> {
     @Override
     protected void decode(ChannelHandlerContext ctx, Integer msg, List<Object> out) throws Exception {
+        System.out.println("IntegerToStringDecoder: " + msg);
         out.add(msg.toString());
     }
 }
