@@ -1,18 +1,23 @@
 package com.example.demo.ch02;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.time.LocalDateTime;
 
 /**
  * Created by frank on 2018-09-29.
  */
+@Entity
 public class Role {
     @Id
     @GeneratedValue
     private Long id;
     private String name;
     private LocalDateTime createTime;
+    @Transient
+    private User user; // for query
 
     public Long getId() {
         return id;
@@ -36,6 +41,14 @@ public class Role {
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

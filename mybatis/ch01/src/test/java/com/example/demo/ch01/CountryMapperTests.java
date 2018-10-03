@@ -33,7 +33,7 @@ public class CountryMapperTests {
     @Test
     public void testAll() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        List<Country> countryList = sqlSession.selectList("selectAll");
+        List<Country> countryList = sqlSession.selectList("com.example.demo.ch01.CountryMapper.selectAll");
         countryList.forEach(System.out::println);
         sqlSession.close();
     }

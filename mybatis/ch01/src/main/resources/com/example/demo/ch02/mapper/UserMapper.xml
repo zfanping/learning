@@ -17,7 +17,58 @@
         SELECT * from user where id =#{id}
     </select>
 
-    <select id="selectAll" resultMap="com.example.demo.ch02.User">
-      SELECT id,username,password,email,info,head_img,createTime from user
+    <select id="selectAll" resultType="com.example.demo.ch02.User">
+      SELECT id,username,password,email,info,head_img,create_time from user
+    </select>
+
+    <select id="selectRolesByUserId" resultType="Role">
+        select
+          r.id,
+          r.name,
+          r.create_time,
+          u.username,
+          u.email
+        from user u
+        join user_role ur on ur.user_id=u.id
+        join role r on r.id=ur.role_id
+        where u.id=#{userId}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO user(id,username,password,email,info,head_img,create_time)
+        VALUES (#{id},#{username},#{password},#{email},#{info},#{headImg,jdbcType=BLOB},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insert2" keyProperty="id" useGeneratedKeys="true">
+        <selectKey keyColumn="id" resultType="long" keyProperty="id" order="BEFORE">
+            call next value for hibernate_sequence
+        </selectKey>
+        INSERT INTO user(id,username,password,email,info,head_img,create_time)
+        VALUES
+        (#{id},#{username},#{password},#{email},#{info},#{headImg,jdbcType=BLOB},#{createTime,jdbcType=TIMESTAMP})
+
+    </insert>
+
+    <update id="updateById">
+        update user
+        set username=#{username},
+          password=#{password},
+          email=#{email},
+          info=#{info},
+          head_img=#{headImg},
+          create_time=#{createTime}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE from user where id=#{id}
+    </delete>
+
+    <select id="selectRoleByUserIdAndRoleName" resultType="Role">
+        select r.*
+        from user u
+        join user_role ur on u.id=ur.user_id
+        join role r on ur.role_id=r.id
+        where u.id=#{userId} and r.name=#{roleName}
     </select>
 </mapper>

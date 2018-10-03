@@ -5,6 +5,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -12,6 +15,8 @@ import java.io.Reader;
 /**
  * Created by frank on 2018-09-29.
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class BaseMapperTest {
     private static SqlSessionFactory sqlSessionFactory;
 

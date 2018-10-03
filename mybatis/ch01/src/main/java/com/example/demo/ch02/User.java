@@ -1,6 +1,8 @@
 package com.example.demo.ch02;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -8,14 +10,16 @@ import java.util.Arrays;
 /**
  * Created by frank on 2018-09-29.
  */
+@Entity
 public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String userame;
+    private String username ;
     private String password;
     private String email;
     private String info;
+
     private byte[] headImg;
     private LocalDateTime createTime;
 
@@ -27,12 +31,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserame() {
-        return userame;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserame(String userame) {
-        this.userame = userame;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -79,7 +83,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userame='" + userame + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", info='" + info + '\'' +

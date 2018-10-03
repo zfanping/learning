@@ -1,5 +1,6 @@
 package com.example.demo.ch02;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -7,6 +8,7 @@ import javax.persistence.ManyToOne;
 /**
  * Created by frank on 2018-09-29.
  */
+@Entity
 public class RolePrivilege {
     @Id
     @GeneratedValue

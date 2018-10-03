@@ -1,21 +1,22 @@
 package com.example.demo.ch02.mapper;
 
+import com.example.demo.ch02.Role;
 import com.example.demo.ch02.User;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.IOException;
-import java.io.Reader;
+import java.time.LocalDateTime;
+import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by frank on 2018-09-29.
  */
+@AutoConfigureDataJpa
 public class UserMapperTest extends BaseMapperTest {
 
     @Test
@@ -29,6 +30,90 @@ public class UserMapperTest extends BaseMapperTest {
 
     @Test
     public void testSelectAll() throws Exception {
+        SqlSession sqlSession = getSqlSession();
 
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        List<User> users = userMapper.selectAll();
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectRolesByUserId() throws Exception {
+        SqlSession sqlSession = getSqlSession();
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        List<Role> roles = userMapper.selectRolesByUserId(1L);
+        sqlSession.close();
+    }
+
+    @Test
+    public void testInsert() throws Exception {
+        SqlSession sqlSession = getSqlSession();
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setId(1L);
+        user.setUsername("test1");
+        user.setPassword("13456");
+        user.setEmail("a@b.com");
+        user.setHeadImg(new byte[]{1, 2, 3});
+        user.setCreateTime(LocalDateTime.now());
+
+        int result = userMapper.insert(user);
+        assertEquals(1, result);
+
+        sqlSession.close();
+    }
+
+    @Test
+    public void testInsert2() throws Exception {
+        SqlSession sqlSession = getSqlSession();
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setUsername("test1");
+        user.setPassword("13456");
+        user.setEmail("a@b.com");
+        user.setHeadImg(new byte[]{1, 2, 3});
+        user.setCreateTime(LocalDateTime.now());
+
+        int result = userMapper.insert2(user);
+        assertEquals(1, result);
+
+        sqlSession.close();
+    }
+
+    @Test
+    public void testUpdate() {
+        SqlSession sqlSession = getSqlSession();
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user = new User();
+        user.setUsername("test1");
+        user.setPassword("13456");
+        user.setEmail("a@b.com");
+        user.setHeadImg(new byte[]{1, 2, 3});
+        user.setCreateTime(LocalDateTime.now());
+
+        int result = userMapper.insert2(user);
+        assertEquals(1, result);
+
+        result = userMapper.updateById(user);
+        assertEquals(1, result);
+
+        result = userMapper.delteById(user.getId());
+        assertEquals(1, result);
+
+
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectRoleByUserIdAndRoleName(){
+        SqlSession sqlSession = getSqlSession();
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        userMapper.selectRoleByUserIdAndRoleName(1L,"test");
+
+        sqlSession.close();
     }
 }

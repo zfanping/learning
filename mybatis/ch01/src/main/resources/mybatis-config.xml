@@ -27,6 +27,8 @@
     <mappers>
         <mapper resource="com/example/demo/ch01/CountryMapper.xml"/>
 
-        <package name="com.example.demo.ch02.mapper"/>
+        <!--<package name="com.example.demo.ch02.mapper"/>-->
+        <mapper resource="com/example/demo/ch02/mapper/UserMapper.xml"/>
+
     </mappers>
 </configuration>
