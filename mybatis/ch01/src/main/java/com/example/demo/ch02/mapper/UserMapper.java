@@ -1,10 +1,10 @@
 package com.example.demo.ch02.mapper;
 
-import com.example.demo.ch02.Role;
-import com.example.demo.ch02.User;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+
+import com.example.demo.ch02.model.Role;
+import com.example.demo.ch02.model.User;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * Created by frank on 2018-09-29.

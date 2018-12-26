@@ -1,23 +1,19 @@
-package com.example.demo.ch02;
+package com.example.demo.ch02.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Transient;
-import java.time.LocalDateTime;
 
 /**
  * Created by frank on 2018-09-29.
  */
 @Entity
-public class Role {
+public class Privilege {
     @Id
     @GeneratedValue
     private Long id;
     private String name;
-    private LocalDateTime createTime;
-    @Transient
-    private User user; // for query
+    private String url;
 
     public Long getId() {
         return id;
@@ -35,29 +31,20 @@ public class Role {
         this.name = name;
     }
 
-    public LocalDateTime getCreateTime() {
-        return createTime;
+    public String getUrl() {
+        return url;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
     public String toString() {
-        return "Role{" +
+        return "Privilege{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", createTime=" + createTime +
+                ", url='" + url + '\'' +
                 '}';
     }
 }
-

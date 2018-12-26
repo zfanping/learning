@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
-        <setting name="logImpl" value="LOG4J"/>
+        <!--<setting name="logImpl" value="LOG4J"/>-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
     <typeAliases>
-        <package name="com.example.demo.ch01"/>
-        <package name="com.example.demo.ch02"/>
+        <package name="com.example.demo.ch01.model"/>
+        <package name="com.example.demo.ch02.model"/>
     </typeAliases>
 
     <environments default="development">
@@ -25,10 +25,10 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="com/example/demo/ch01/CountryMapper.xml"/>
+        <mapper resource="com/example/demo/ch01/mapper/CountryMapper.xml"/>
 
-        <!--<package name="com.example.demo.ch02.mapper"/>-->
-        <mapper resource="com/example/demo/ch02/mapper/UserMapper.xml"/>
+        <package name="com.example.demo.ch02.mapper"/>
+        <!--<mapper resource="com/example/demo/ch02/mapper/UserMapper.xml"/>-->
 
     </mappers>
 </configuration>

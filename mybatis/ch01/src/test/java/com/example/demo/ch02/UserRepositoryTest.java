@@ -1,5 +1,6 @@
 package com.example.demo.ch02;
 
+import com.example.demo.ch02.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

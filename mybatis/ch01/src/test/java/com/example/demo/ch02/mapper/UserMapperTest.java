@@ -1,15 +1,13 @@
 package com.example.demo.ch02.mapper;
 
-import com.example.demo.ch02.Role;
-import com.example.demo.ch02.User;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import com.example.demo.ch02.model.Role;
+import com.example.demo.ch02.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
