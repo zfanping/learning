@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" lazy-init="false">
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="mapperLocations">
             <array>
@@ -10,10 +10,10 @@
             </array>
         </property>
         <property name="dataSource" ref="dataSource"/>
-        <property name="typeAliasesPackage" value="com.example.demo.ch01.model"/>
+        <!--<property name="typeAliasesPackage" value="com.example.demo.ch01.model"/>-->
     </bean>
 
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" lazy-init="false">
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
         <property name="basePackage" value="com.example.demo.**.mapper"/>
     </bean>
 </beans>
