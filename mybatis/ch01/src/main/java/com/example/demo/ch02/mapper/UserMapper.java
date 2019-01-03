@@ -22,7 +22,7 @@ public interface UserMapper {
 
     int updateById(User user);
 
-    int delteById(Long id);
+    int deleteById(Long id);
 
     List<Role> selectRoleByUserIdAndRoleName(@Param("userId") Long userId, @Param("roleName") String roleName);
 

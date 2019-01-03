@@ -39,7 +39,7 @@
         VALUES (#{id},#{username},#{password},#{email},#{info},#{headImg,jdbcType=BLOB},#{createTime,jdbcType=TIMESTAMP})
     </insert>
 
-    <!-- <insert id="insert2" keyProperty="id" useGeneratedKeys="true">
+     <insert id="insert2" keyProperty="id" useGeneratedKeys="true">
          <selectKey keyColumn="id" resultType="long" keyProperty="id" order="BEFORE">
              call next value for hibernate_sequence
          </selectKey>
@@ -47,7 +47,7 @@
          VALUES
          (#{id},#{username},#{password},#{email},#{info},#{headImg,jdbcType=BLOB},#{createTime,jdbcType=TIMESTAMP})
  
-     </insert>-->
+     </insert>
 
     <update id="updateById">
         update user

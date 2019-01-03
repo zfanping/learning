@@ -7,14 +7,18 @@ import com.example.demo.ch02.model.Role;
 import com.example.demo.ch02.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * Created by frank on 2018-09-29.
  */
-@AutoConfigureDataJpa
+@RunWith(SpringRunner.class)
+@SpringBootTest
+//@AutoConfigureDataJpa
 public class UserMapperTest extends BaseMapperTest {
 
     @Test
@@ -99,7 +103,7 @@ public class UserMapperTest extends BaseMapperTest {
         result = userMapper.updateById(user);
         assertEquals(1, result);
 
-        result = userMapper.delteById(user.getId());
+        result = userMapper.deleteById(user.getId());
         assertEquals(1, result);
 
 
