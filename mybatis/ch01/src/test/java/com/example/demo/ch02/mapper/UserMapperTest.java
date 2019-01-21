@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Created by frank on 2018-09-29.
@@ -20,6 +21,17 @@ import static org.junit.Assert.assertEquals;
 @SpringBootTest
 //@AutoConfigureDataJpa
 public class UserMapperTest extends BaseMapperTest {
+
+    @Test
+    public void testGetMapper() throws Exception {
+        SqlSession sqlSession = getSqlSession();
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        UserMapper userMapper2 = sqlSession.getMapper(UserMapper.class);
+        assertFalse(userMapper == userMapper2);
+
+        sqlSession.close();
+    }
 
     @Test
     public void testSelectById() throws Exception {
@@ -111,10 +123,10 @@ public class UserMapperTest extends BaseMapperTest {
     }
 
     @Test
-    public void testSelectRoleByUserIdAndRoleName(){
+    public void testSelectRoleByUserIdAndRoleName() {
         SqlSession sqlSession = getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        userMapper.selectRoleByUserIdAndRoleName(1L,"test");
+        userMapper.selectRoleByUserIdAndRoleName(1L, "test");
 
         sqlSession.close();
     }

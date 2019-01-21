@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com.example.demo.lazy"/>
+
+    <bean id="default" class="com.example.demo.lazy.TestBean"/>
+
+    <bean id="eager" class="com.example.demo.lazy.TestBean" lazy-init="false">
+        <property name="other" ref="lazy"/>
+    </bean>
+
+    <bean id="lazy" class="com.example.demo.lazy.TestBean" lazy-init="true">
+        <property name="other" ref="lazy2"/>
+    </bean>
+
+    <bean id="lazy2" class="com.example.demo.lazy.TestBean" lazy-init="true"/>
+
+    <bean id="testbean2" class="com.example.demo.lazy.TestBean2" lazy-init="true"/>
+
+   
+   <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="customTargetSourceCreators">
+            <list>
+                <bean class="org.springframework.aop.framework.autoproxy.target.LazyInitTargetSourceCreator"/>
+            </list>
+        </property>
+    </bean>
+
+   <!-- <bean id="service" class="org.springframework.aop.framework.ProxyFactoryBean" lazy-init="true">
+        <property name="targetSource">
+            <bean class="org.springframework.aop.target.LazyInitTargetSource">
+                <property name="targetBeanName"><idref bean="testbean2"/></property>
+            </bean>
+        </property>
+        <property name="proxyTargetClass" value="true"/>
+    </bean>-->
+</beans>
