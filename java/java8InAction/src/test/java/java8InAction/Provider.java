@@ -1,4 +1,5 @@
 package java8InAction;
 
-public class Provider {
+public interface Provider<T extends Number> {
+    void prepare(T number);
 }

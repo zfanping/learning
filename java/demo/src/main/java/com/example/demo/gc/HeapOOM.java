@@ -1,7 +1,5 @@
 package com.example.demo.gc;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,16 +19,13 @@ public class HeapOOM {
 
 	}
 
-	@Test 
-	public void test1() {
+	/*public static void main(String[] args) {
 		List<OOMObject> list = new ArrayList<>();
 		while (true) {
 			list.add(new OOMObject());
 		}
-	}
-
-	@Test
-	public void test2(String[] args) {
+	}*/
+	public static void main(String[] args) {
 		while (true) {
 			doNew();
 		}

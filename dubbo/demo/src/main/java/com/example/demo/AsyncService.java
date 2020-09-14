@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.concurrent.CompletableFuture;
+
 /**
  * <b>功能：</b>XXX<br>
  * <b>Copyright TCSL</b>
@@ -8,4 +10,5 @@ package com.example.demo;
  * <li>v1.0| 20190606| 曾凡平| 创建</li>
  */
 public interface AsyncService {
+	CompletableFuture<String> sayHello(String name);
 }

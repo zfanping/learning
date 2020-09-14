@@ -1,4 +1,4 @@
 package java8InAction;
 
-public class Fruit {
+public interface Fruit<T extends Number> {
 }
